@@ -1,5 +1,6 @@
 export type HttpPostProps = {
   url: string
+  body?: object
 }
 
 export interface HttpPostClient {
