@@ -8,14 +8,19 @@ import { InvalidCredentialsError } from '@/domain/errors/invalidCredentialsError
 import { UnexpectedError } from '@/domain/errors/unexpectedError'
 
 import { RemoteAuthentication } from './remoteAuthentication'
+import { AuthenticationProps } from '@/domain/usecases/authentication'
+import { AccountModel } from '@/domain/models/accountModel'
 
 type SutTypes = {
   sut: RemoteAuthentication
-  httpPostClientSpy: HttpPostClientSpy
+  httpPostClientSpy: HttpPostClientSpy<AuthenticationProps, AccountModel>
 }
 
 const makeSut = (url = faker.internet.url()): SutTypes => {
-  const httpPostClientSpy = new HttpPostClientSpy()
+  const httpPostClientSpy = new HttpPostClientSpy<
+    AuthenticationProps,
+    AccountModel
+  >()
   const sut = new RemoteAuthentication(url, httpPostClientSpy) // System ander test
   return {
     sut,
@@ -73,4 +78,13 @@ describe('RemoteAuthentication', () => {
     const promisse = sut.auth(mockAuthentication())
     expect(promisse).rejects.toThrow(new UnexpectedError())
   })
+
+  // it('Should  returns 200', async () => {
+  //   const { sut, httpPostClientSpy } = makeSut()
+  //   httpPostClientSpy.response = {
+  //     statusCode: HttpStatusCode.notFound
+  //   }
+  //   const promisse = sut.auth(mockAuthentication())
+  //   expect(promisse).rejects.toThrow(new UnexpectedError())
+  // })
 })

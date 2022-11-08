@@ -4,11 +4,15 @@ import { AuthenticationProps } from '@/domain/usecases/authentication'
 
 import { HttpPostClient } from '@/data/protocols/http/httpPostClient'
 import { HttpStatusCode } from '@/data/protocols/http/httpResponse'
+import { AccountModel } from '@/domain/models/accountModel'
 
 export class RemoteAuthentication {
   constructor(
     private readonly url: string,
-    private readonly httpPostClient: HttpPostClient
+    private readonly httpPostClient: HttpPostClient<
+      AuthenticationProps,
+      AccountModel
+    >
   ) {}
 
   async auth(props: AuthenticationProps): Promise<void> {

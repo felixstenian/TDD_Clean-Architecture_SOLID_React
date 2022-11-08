@@ -7,14 +7,14 @@ import {
   HttpStatusCode
 } from '@/data/protocols/http/httpResponse'
 
-export class HttpPostClientSpy implements HttpPostClient {
+export class HttpPostClientSpy<T, R> implements HttpPostClient<T, R> {
   url?: string
-  body?: object
-  response: HttpResponse = {
+  body?: T
+  response: HttpResponse<R> = {
     statusCode: HttpStatusCode.ok
   }
 
-  async post(props: HttpPostProps): Promise<HttpResponse> {
+  async post(props: HttpPostProps<T>): Promise<HttpResponse<R>> {
     this.url = props.url
     this.body = props.body
     return Promise.resolve(this.response)
