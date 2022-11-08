@@ -1,7 +1,7 @@
 import {
   HttpPostClient,
   HttpPostProps
-} from 'data/protocols/http/httpPostClient'
+} from '@/data/protocols/http/httpPostClient'
 
 export class HttpPostClientSpy implements HttpPostClient {
   url?: string
