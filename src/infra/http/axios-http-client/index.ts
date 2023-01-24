@@ -1,1 +1,1 @@
-export * from './axiosHttpClient'
+export * from './axiosHttpClientAdapter'
