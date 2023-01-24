@@ -1,6 +1,7 @@
-import { HttpPostProps } from '../../../data/protocols/http/httpPostClient'
 import axios from 'axios'
 import { faker } from '@faker-js/faker'
+
+import { HttpPostProps } from '@/data/protocols/http'
 
 import { AxiosHttpClientAdapter } from '.'
 
