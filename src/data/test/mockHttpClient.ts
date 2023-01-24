@@ -12,9 +12,9 @@ export class HttpPostClientSpy<T, R> implements HttpPostClient<T, R> {
     statusCode: HttpStatusCode.ok
   }
 
-  async post(props: HttpPostProps<T>): Promise<HttpResponse<R>> {
-    this.url = props.url
-    this.body = props.body
+  async post({ url, body }: HttpPostProps<T>): Promise<HttpResponse<R>> {
+    this.url = url
+    this.body = body
     return Promise.resolve(this.response)
   }
 }

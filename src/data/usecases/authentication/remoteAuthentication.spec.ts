@@ -8,11 +8,11 @@ import { AuthenticationProps } from '@/domain/usecases'
 import { AccountModel } from '@/domain/models'
 import { InvalidCredentialsError, UnexpectedError } from '@/domain/errors'
 
-import { RemoteAuthentication } from './remoteAuthentication'
+import { RemoteAuthentication } from '.'
 
 type SutTypes = {
   sut: RemoteAuthentication
-  httpPostClientSpy: HttpPostClientSpy<AuthenticationProps, AccountModel>
+  httpPostClientSpy: HttpPostClientSpy<AuthenticationProps, AccountModel> // O Spy é um duble de testes, um tipo e mock, que serve para colocar valores fakes na resposta de metodos e também cria variaveis auxiliares paa capturar valores e ralizar comparações
 }
 
 const makeSut = (url = faker.internet.url()): SutTypes => {
@@ -20,7 +20,7 @@ const makeSut = (url = faker.internet.url()): SutTypes => {
     AuthenticationProps,
     AccountModel
   >()
-  const sut = new RemoteAuthentication(url, httpPostClientSpy) // System ander test
+  const sut = new RemoteAuthentication(url, httpPostClientSpy) // System ander test -> objeto que estamos testando
   return {
     sut,
     httpPostClientSpy
