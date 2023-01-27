@@ -17,6 +17,8 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@types/jest": "^29.2.2",
     "@types/node": "^18.11.6",
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
     "@typescript-eslint/eslint-plugin": "^5.41.0",
     "@typescript-eslint/parser": "^5.41.0",
     "eslint": "^8.26.0",
@@ -34,6 +36,8 @@
     "typescript": "^4.8.4"
   },
   "dependencies": {
-    "axios": "^1.2.4"
+    "axios": "^1.2.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }
