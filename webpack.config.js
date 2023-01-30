@@ -1,11 +1,11 @@
-import path from 'path'
-import { CleanWebpackPlugin } from 'clean-webpack-plugin'
+const path = require('path')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
-module.exports = {
+const webpackConfig = {
   mode: 'development',
   entry: './src/main/index.tsx',
   output: {
-    path: path.join(__dirname, 'public/js'),
+    path: path.join(__dirname, './public/js'),
     publicPath: '/public/js',
     filename: 'bundle.js'
   },
@@ -42,13 +42,20 @@ module.exports = {
     ]
   },
   devServer: {
-    contentBase: './public',
-    writeToDisk: true,
-    historyApiFallback: true
+    historyApiFallback: true,
+    port: 3001,
+    static: {
+      directory: './public'
+    },
+    devMiddleware: {
+      writeToDisk: true
+    }
   },
   externals: {
-    react: 'react',
+    react: 'React',
     'react-dom': 'ReactDOM'
   },
   plugins: [new CleanWebpackPlugin()]
 }
+
+module.exports = webpackConfig

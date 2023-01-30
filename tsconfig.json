@@ -3,9 +3,11 @@
     "baseUrl": "src",
     "target": "ES6",
     "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
+      "DOM",
+      "ES6",
+      "DOM.Iterable",
+      "ScriptHost",
+      "ES2016.Array.Include"
     ],
     "allowJs": true,
     "strict": false,
@@ -15,8 +17,9 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react",
     "rootDirs": ["src", "tests"],
+    "sourceMap": true,
     "paths": {
       "@/*": ["*"]
     }
